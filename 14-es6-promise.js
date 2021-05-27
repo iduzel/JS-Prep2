@@ -24,15 +24,23 @@ let cleanRoom = function() {
   })
 }
 
-let removeGarbage = function() {
+let removeGarbage = function(msg) {
   return new Promise(function(resolve,reject) {
-    resolve('Garbage is removed')
+    resolve(msg +'. Garbage is removed')
   })
 }
 
 
-let winIceCream = function() {
+let winIceCream = function(msg) {
   return new Promise(function(resolve,reject) {
-    resolve('You got the icecream')
+    resolve(msg + '. You got the icecream.')
   })
 }
+
+cleanRoom().then(function(result){
+  return removeGarbage(result);
+}).then(function(result){
+  return winIceCream(result)
+}).then(function(result){
+  console.log('Finished. ' + result);
+})
